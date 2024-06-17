@@ -10,6 +10,8 @@ This is an attempt to fine tune SOTA Large Language Models so as to generate Ver
 ├── README.md
 ├── data
 │     └── df_small.csv
+├── CodeGen
+|     └── verilog_llm (1).ipynb
 ├── Llama2
 |     └── llama2-on-verilog-code-data.ipynb
 ├── Phi2-LoRA
