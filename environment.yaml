@@ -3,7 +3,7 @@ channels:
   - defaults
 dependencies:
   - absl-py==1.4.0
-  - accelerate==0.21.0
+  - accelerate @ git+https://github.com/huggingface/accelerate.git@97d2168e5953fe7373a06c69c02c5a00a84d5344
   - access==1.1.9
   - affine==2.4.0
   - aiobotocore==2.13.0
@@ -103,6 +103,7 @@ dependencies:
   - cufflinks==0.17.3
   - cuml @ file:///opt/conda/conda-bld/work/python
   - cupy @ file:///home/conda/feedstock_root/build_artifacts/cupy-split_1714404887037/work
+  - cupy-cuda11x==13.2.0
   - CVXcanon==0.1.2
   - cycler @ file:///home/conda/feedstock_root/build_artifacts/cycler_1696677705766/work
   - cymem @ file:///home/conda/feedstock_root/build_artifacts/cymem_1695443485440/work
@@ -117,7 +118,7 @@ dependencies:
   - dask-expr==1.1.2
   - dataclasses-json==0.6.6
   - dataproc_jupyter_plugin==0.1.66
-  - datasets==2.19.2
+  - datasets==2.20.0
   - datashader==0.16.2
   - datatile==1.0.3
   - db-dtypes==1.2.0
@@ -156,6 +157,7 @@ dependencies:
   - essentia==2.1b6.dev1110
   - et-xmlfile==1.1.0
   - etils==1.6.0
+  - evaluate==0.4.2
   - exceptiongroup @ file:///home/conda/feedstock_root/build_artifacts/exceptiongroup_1704921103267/work
   - executing @ file:///home/conda/feedstock_root/build_artifacts/executing_1698579936712/work
   - explainable-ai-sdk==1.3.3
@@ -440,7 +442,19 @@ dependencies:
   - numba==0.58.1
   - numexpr==2.10.0
   - numpy @ file:///home/conda/feedstock_root/build_artifacts/numpy_1707225380409/work/dist/numpy-1.26.4-cp310-cp310-linux_x86_64.whl#sha256=51131fd8fc130cd168aecaf1bc0ea85f92e8ffebf211772ceb16ac2e7f10d7ca
+  - nvidia-cublas-cu12==12.1.3.1
+  - nvidia-cuda-cupti-cu12==12.1.105
+  - nvidia-cuda-nvrtc-cu12==12.1.105
+  - nvidia-cuda-runtime-cu12==12.1.105
+  - nvidia-cudnn-cu12==9.1.0.70
+  - nvidia-cufft-cu12==11.0.2.54
+  - nvidia-curand-cu12==10.3.2.106
+  - nvidia-cusolver-cu12==11.4.5.107
+  - nvidia-cusparse-cu12==12.1.0.106
   - nvidia-ml-py==11.495.46
+  - nvidia-nccl-cu12==2.20.5
+  - nvidia-nvjitlink-cu12==12.5.82
+  - nvidia-nvtx-cu12==12.1.105
   - nvtx @ file:///home/conda/feedstock_root/build_artifacts/nvtx_1708093799817/work
   - oauth2client==4.1.3
   - oauthlib==3.2.2
@@ -530,7 +544,7 @@ dependencies:
   - py4j==0.10.9.7
   - pyaml==24.4.0
   - PyArabic==0.6.15
-  - pyarrow==14.0.2
+  - pyarrow==17.0.0
   - pyarrow-hotfix @ file:///home/conda/feedstock_root/build_artifacts/pyarrow-hotfix_1700596371886/work
   - pyasn1 @ file:///home/conda/feedstock_root/build_artifacts/pyasn1_1701287008248/work
   - pyasn1-modules @ file:///home/conda/feedstock_root/build_artifacts/pyasn1-modules_1695107857548/work
@@ -641,7 +655,7 @@ dependencies:
   - scikit-optimize==0.10.1
   - scikit-plot==0.3.7
   - scikit-surprise==1.1.4
-  - scipy==1.11.4
+  - scipy==1.14.0
   - seaborn==0.12.2
   - SecretStorage==3.3.3
   - segment_anything @ git+https://github.com/facebookresearch/segment-anything.git@6fdee8f2727f4506cfbbe553e23b895e27956588
@@ -654,7 +668,7 @@ dependencies:
   - setuptools-git==1.2
   - setuptools-scm==8.1.0
   - shap==0.44.1
-  - Shapely==1.8.5.post1
+  - shapely==2.0.5
   - shellingham @ file:///home/conda/feedstock_root/build_artifacts/shellingham_1698144360966/work
   - Shimmy==1.3.0
   - simpervisor==1.0.0
@@ -743,7 +757,7 @@ dependencies:
   - tomli==2.0.1
   - tomlkit==0.12.5
   - toolz @ file:///home/conda/feedstock_root/build_artifacts/toolz_1706112571092/work
-  - torch @ file:///tmp/torch/torch-2.1.2-cp310-cp310-linux_x86_64.whl#sha256=ae3259980b8d6551608b32fde2695baca64c72ed15ab2332023a248c113815a8
+  - torch==2.4.0
   - torchaudio @ file:///tmp/torch/torchaudio-2.1.2-cp310-cp310-linux_x86_64.whl#sha256=10966b20361b49bc41b6c6ba842d3ea842320fb8c589823b4120f24a98013b4a
   - torchdata==0.7.1
   - torchinfo==1.8.0
@@ -756,8 +770,9 @@ dependencies:
   - traceml==1.0.8
   - traitlets @ file:///home/conda/feedstock_root/build_artifacts/traitlets_1675110562325/work
   - traittypes==0.2.1
-  - transformers==4.31.0
+  - transformers==4.30.0
   - treelite @ file:///home/conda/feedstock_root/build_artifacts/treelite_1714790088265/work/python
+  - triton==3.0.0
   - trl==0.4.7
   - truststore @ file:///home/conda/feedstock_root/build_artifacts/truststore_1694154605758/work
   - trx-python==0.2.9
