@@ -8,16 +8,23 @@ This is an attempt to fine tune SOTA Large Language Models so as to generate Ver
 ├── .gitignore
 ├── LICENSE
 ├── README.md
+├── environment.yaml
+├── requirements.txt
 ├── data
 │     └── df_small.csv
+│     └── formatted_small_df.csv
+├── preprocessing
+│     └── data_preprocessing.py
+│     └── small_df_preprocessing.py        // generates .csv file with base prompt, instructions, error code and correct (expected) output
 ├── CodeGen
-|     └── verilog_llm (1).ipynb
+|     └── base-codegen-for-verilog-generation.ipynb            
 ├── Llama2
-|     └── llama2-on-verilog-code-data.ipynb
-├── Phi2-LoRA
-|     └── finetuning-phi2-using-lora-on-dialogsum-dataset.ipynb
+|     └── base_llama.ipynb
+|     └── finetuning-llama2-7b-on-verilog-code-data.ipynb
 ├── ref
 |     └── RTLFixerAutomatically Fixing RTL Syntax Errors with LargeLanguage Models.pdf
+|     └── Phi2-LoRA
+|           └── finetuning-phi2-using-lora-on-dialogsum-dataset.ipynb
 └──  utils
       └── functions.py
 
