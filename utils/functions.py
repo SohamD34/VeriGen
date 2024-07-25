@@ -1,5 +1,7 @@
 from pynvml import *
 from functools import partial
+import re
+import random
 
 def print_gpu_utilization():
     nvmlInit()
@@ -62,7 +64,7 @@ def preprocess_batch(batch, tokenizer, max_length):
 
 
 # SOURCE https://github.com/databrickslabs/dolly/blob/master/training/trainer.py
-def preprocess_dataset(tokenizer: AutoTokenizer, max_length: int,seed, dataset):
+def preprocess_dataset(tokenizer, max_length: int, seed, dataset):
     """Format & tokenize it so it is ready for training
     :param tokenizer (AutoTokenizer): Model Tokenizer
     :param max_length (int): Maximum number of tokens to emit from tokenizer
@@ -83,3 +85,82 @@ def preprocess_dataset(tokenizer: AutoTokenizer, max_length: int,seed, dataset):
     dataset = dataset.shuffle(seed=seed)
 
     return dataset
+
+
+
+def randomize_variable_names(verilog_code, change_probability=0.5):
+    variables = re.findall(r'\b\w+\b', verilog_code)
+
+    keywords = {'module', 'input', 'output', 'wire', 'reg', 'assign', 'always', 'begin', 'end'}
+    variables = [var for var in variables if var not in keywords and not var.isdigit()]
+    unique_variables = set(variables)
+
+    changed_variables = {}
+    for var in unique_variables:
+        new_var = var + str(random.randint(0, 9))
+        changed_variables[var] = new_var
+
+    def random_replace(match):
+        var = match.group(0)
+        if var in changed_variables and random.random() < change_probability:
+            return changed_variables[var]
+        return var
+
+    randomized_verilog_code = re.sub(r'\b\w+\b', random_replace, verilog_code)
+
+    return randomized_verilog_code
+
+
+
+def randomize_operators(verilog_code, change_probability=0.5):
+    operators = ['\+', '-', '\*', '/', '%', '&', '\|', '\^', '!', '~', '&&', '\|\|', '==', '!=', '<', '<=', '>', '>=']
+    operator_replacements = {
+        '+': ['-', '*', '/', '%', '&&', '^'],
+        '-': ['+', '*', '/', '%', '&&', '^'],
+        '*': ['+', '-', '/', '%', '&&', '^'],
+        '/': ['+', '-', '*', '%', '&&', '^'],
+        '%': ['+', '-', '*', '/', '&&', '^'],
+        '&': ['&', '|', '+', '*', '/', '-'],
+        '|': ['&', '|', '+', '*', '/', '-'],
+        '^': ['&', '|', '+', '*', '/', '-'],
+        '!': ['&', '|', '+', '*', '/', '-'],
+        '~': ['&', '|', '+', '*', '/', '-'],
+        '&&': ['||', '%%'],
+        '||': ['&&', '%%'],
+        '==': ['!=', '<', '<=', '>', '>='],
+        '!=': ['==', '<', '<=', '>', '>='],
+        '<': ['<=', '>', '>='],
+        '<=': ['<', '>', '>='],
+        '>': ['<', '<=', '>='],
+        '>=': ['<', '<=', '>']
+    }
+
+    def random_replace_operator(match):
+        op = match.group(0)
+        if random.random() < change_probability:
+            possible_replacements = operator_replacements.get(op, [])
+            if possible_replacements:
+                return random.choice(possible_replacements)
+        return op
+
+    pattern = re.compile('|'.join(operators))
+    randomized_verilog_code = pattern.sub(random_replace_operator, verilog_code)
+    return randomized_verilog_code
+
+
+
+def comment_lines(input_string):
+    """
+    Adds '//' at the beginning of random lines in the input string
+    """
+    lines = input_string.split('\n')
+    total_lines = len(lines)
+    
+    num_comments = random.randint(0, total_lines//2)
+    
+    for i in range(num_comments):
+        line_no = random.randint(0, total_lines-1)
+        lines[line_no] = '//' + lines[line_no]
+    
+    commented_string = '\n'.join(lines)    
+    return commented_string
