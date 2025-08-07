@@ -4,8 +4,6 @@ import numpy as np
 import random
 from utils.functions import comment_lines, randomize_operators, randomize_variable_names
 
-os.chdir('E:/Binod Sir Internship/VeriGen')
-
 half_adder_1_bit = """
 module half_adder (
     input a, b,
